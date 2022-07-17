@@ -5,8 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: [ "**" ]
-
+    branches:
+      - main        # The default branch
+      - feature-*    # The other branches to be analyzed
 permissions:
   contents: read
 
