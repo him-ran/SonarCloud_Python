@@ -12,7 +12,7 @@ import textwrap
 from distutils.dir_util import copy_tree
 from pathlib import Path
 
-import toml
+import tomli
 
 import sonar.database
 import sonar.include

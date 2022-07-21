@@ -1,1 +1,1 @@
-../../examples/projects/ethernet/ethernet.py
+#./../examples/projects/ethernet/ethernet.py
