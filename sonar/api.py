@@ -12,7 +12,7 @@ import textwrap
 from distutils.dir_util import copy_tree
 from pathlib import Path
 
-import tomli
+import tomlii
 
 import sonar.database
 import sonar.include
@@ -512,12 +512,12 @@ class Create:
         sonar.database.IP.add_new(args.name, ip_dir)
         # repos = sonar.database.Repo.get()
         # path = repos[active_repo]["path"]
-        # init_toml = os.path.join(path, Constants.SONAR_CONFIG_FILE)
-        # init = toml.load(init_toml)
+        # init_tomli = os.path.join(path, Constants.SONAR_CONFIG_FILE)
+        # init = tomli.load(init_tomli)
         # init["project"]["ips"] = [args.name]
         # print(init)
-        # with open(init_toml, "w") as f:
-        #     toml.dump(init, f)
+        # with open(init_tomli, "w") as f:
+        #     tomli.dump(init, f)
 
     @staticmethod
     def repo(args):
@@ -545,11 +545,11 @@ class Create:
         )
         shutil.copy(src_file, repo_dir)
 
-        init_toml = repo_dir.joinpath(Constants.SONAR_CONFIG_FILE_PATH)
-        init = toml.load(init_toml)
+        init_tomli = repo_dir.joinpath(Constants.SONAR_CONFIG_FILE_PATH)
+        init = tomli.load(init_tomli)
         init["project"]["name"] = args.name
-        with open(init_toml, "w") as f:
-            toml.dump(init, f)
+        with open(init_tomli, "w") as f:
+            tomli.dump(init, f)
 
         os.chdir(repo_dir)
         args = sonar.include.DotDict({"name": args.name})

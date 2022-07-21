@@ -5,7 +5,7 @@ Test creating repositories and IPs
 import os
 
 import pytest
-import toml
+import tomli
 
 from sonar.core.include import Constants
 from sonar.exceptions import ReturnValue
@@ -59,7 +59,7 @@ class TestCreate:
         assert not missing_files
         assert not extra_files
 
-        init = toml.load(repo_path.joinpath(Constants.SONAR_CONFIG_FILE_PATH))
+        init = tomli.load(repo_path.joinpath(Constants.SONAR_CONFIG_FILE_PATH))
         assert init["project"]["name"] == "test_repo"
         assert exit_code == ReturnValue.SONAR_OK
 

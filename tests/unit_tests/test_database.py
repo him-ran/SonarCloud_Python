@@ -6,7 +6,7 @@ import os
 import textwrap
 
 import pytest
-import toml
+import tomli
 
 import sonar.api
 import sonar.core.include
@@ -36,13 +36,13 @@ def test_find_fpga_family():
 
 def mock_config(_path):
     """
-    Load a mock config to override toml.load()
+    Load a mock config to override tomli.load()
 
     Args:
-        path (str): Normally, the path to the TOML is provided
+        path (str): Normally, the path to the tomli is provided
 
     Returns:
-        dict: The interpreted TOML file
+        dict: The interpreted tomli file
     """
     return {"project": {"name": "valid"}}
 
@@ -245,7 +245,7 @@ class TestRepo:
         with pytest.raises(sonar.exceptions.SonarInvalidArgError):
             sonar.database.Repo.get("fake_repo")
 
-        monkeypatch.setattr(toml, "load", mock_config)
+        monkeypatch.setattr(tomli, "load", mock_config)
         sonar.database.Repo.add(self.paths.valid)
 
         repos = sonar.database.Repo.get()
@@ -262,7 +262,7 @@ class TestRepo:
         """
         sonar.database.init()
 
-        monkeypatch.setattr(toml, "load", mock_config)
+        monkeypatch.setattr(tomli, "load", mock_config)
         sonar.database.Repo.add(self.paths.valid)
 
         sonar.database.Repo.activate("valid")
@@ -333,7 +333,7 @@ class TestEnv:
         """
         sonar.database.init()
 
-        monkeypatch.setattr(toml, "load", mock_config)
+        monkeypatch.setattr(tomli, "load", mock_config)
         sonar.database.Repo.add(self.paths.valid)
 
         board_path = os.path.join(self.sonar.abs_path(), "sonar/boards/ad_8k5")

@@ -9,7 +9,7 @@ import pprint
 import runpy
 import shelve
 
-import toml
+import tomli
 
 from sonar.core.include import Constants
 from sonar.exceptions import SonarInvalidArgError, SonarInvalidOpError
@@ -475,7 +475,7 @@ class Repo:
                 repo_path = os.getcwd()
             else:
                 repo_path = path
-            config = toml.load(
+            config = tomli.load(
                 os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
             )
             repo = config["project"]["name"]
@@ -585,16 +585,16 @@ class IP:
         active_repo = Repo.get_active()
         repo = Repo.get(active_repo)
         repo_path = repo["path"]
-        init_toml = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
-        init_dict = toml.load(init_toml)
+        init_tomli = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
+        init_dict = tomli.load(init_tomli)
         init_dict["project"]["ips"] = [name]
         if "ips" not in init_dict:
             init_dict["ips"] = {}
         init_dict["ips"][name] = {
             "path": str(path).replace(str(repo_path), "")
         }
-        with open(init_toml, "w") as f:
-            toml.dump(init_dict, f)
+        with open(init_tomli, "w") as f:
+            tomli.dump(init_dict, f)
 
     # @staticmethod
     # def add_src(name, path, src_type):
@@ -602,8 +602,8 @@ class IP:
     #     active_repo = Repo.get_active()
     #     repo = Repo.get(active_repo)
     #     repo_path = repo["path"]
-    #     init_toml = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
-    #     init = toml.load(init_toml)
+    #     init_tomli = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
+    #     init = tomli.load(init_tomli)
     #     assert ip is not None
 
     #     if "src" not in init["ips"][ip]:
@@ -613,8 +613,8 @@ class IP:
     #             "custom": []
     #         }
     #     init["ips"][ip]["src"][src_type].append(name)
-    #     with open(init_toml, "w") as f:
-    #         toml.dump(init, f)
+    #     with open(init_tomli, "w") as f:
+    #         tomli.dump(init, f)
 
     #     # with shelve.open(Constants.SONAR_DB_PATH) as db:
     #     #     repos = db["repo"]
@@ -626,8 +626,8 @@ class IP:
     #     active_repo = Repo.get_active()
     #     repo = Repo.get(active_repo)
     #     repo_path = repo["path"]
-    #     init_toml = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
-    #     init = toml.load(init_toml)
+    #     init_tomli = os.path.join(repo_path, Constants.SONAR_CONFIG_FILE_PATH)
+    #     init = tomli.load(init_tomli)
     #     if "ips" in init["project"]:
     #         for ip, ip_data in init["ips"].items():
     #             if path.endswith(ip_data["path"]):
