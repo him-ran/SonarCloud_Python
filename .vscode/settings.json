@@ -1,0 +1,9 @@
+{
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.extraPaths": [
+        "./src/git-graph-automation"
+    ],
+    "python.pythonPath": "C:\\programfiles\\python3\\python.exe"
+}
