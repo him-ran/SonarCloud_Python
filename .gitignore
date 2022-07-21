@@ -1,4 +1,31 @@
-flask_session
-_pycache_
-.idea
-venv
+# Sonar
+*.dat
+user/**
+!user/__init__.py
+*.log
+build/
+tmp*
+
+# Environment
+.vscode/
+*.code-workspace
+
+# Xilinx
+vivado*.jou
+.Xil/
+
+# Python
+*.pyc
+*.egg-info/
+.coverage
+coverage.xml
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+
+# Executables
+*.out
+*.app
