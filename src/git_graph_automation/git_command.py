@@ -16,7 +16,6 @@ def invoke_git_log(limit=0, directory=""):
     if directory == "":
         directory = os.path.dirname(__file__)
 
-    # # baseCommand = "git --git-dir='C:/develop/GitHub/AzureDevopsWordPlayground/.git' log --pretty=format:'{%n  \"refs\" : \"%D\",%n  \"hash\": \"%H\",%n  \"hashAbbrev\" : \"%h\",%n  \"parents\" : [\"%P\"],%n  \"author\": {%n    \"name\": \"%aN\",%n    \"email\": \"%aE\",%n    \"timestamp\": \"%aD\"%n  },%n  \"subject\": \"%s\"%n},'"
     # # if limit > 0:
     # #     baseCommand += f' -n {limit}'
     # command = ['git']
