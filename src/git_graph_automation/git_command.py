@@ -16,21 +16,7 @@ def invoke_git_log(limit=0, directory=""):
     if directory == "":
         directory = os.path.dirname(__file__)
 
-    # # if limit > 0:
-    # #     baseCommand += f' -n {limit}'
-    # command = ['git']
-    # command.append('--git-dir=C:/develop/GitHub/AzureDevopsWordPlayground/.git')
-    # command.append('log')
-    # command.append("--pretty=format:'{%n  \"refs\" : \"%D\",%n  \"hash\": \"%H\",%n  \"hashAbbrev\" : \"%h\",%n  \"parents\" : [\"%P\"],%n  \"author\": {%n    \"name\": \"%aN\",%n    \"email\": \"%aE\",%n    \"timestamp\": \"%aD\"%n  },%n  \"subject\": \"%s\"%n},")
-
-    # if limit > 0:
-    #     command.append(f'-n {limit}')
-
-    # output = subprocess.run(command, capture_output=True)
-    # result = output.stdout.decode('utf-8')
-
     command = ['git']
-    # command.append('--git-dir=C:/develop/GitHub/AzureDevopsWordPlayground/.git')
     command.append('log')
     command.append(
         "--pretty=format:{\"refs\" : \"%D\",  \"hash\": \"%H\",  \"hashAbbrev\" : \"%h\",  \"parents\" : \"%P\",  \"author\": {    \"name\": \"%aN\",    \"email\": \"%aE\",    \"timestamp\": \"%aD\"  },  \"subject\": \"%s\"},")
